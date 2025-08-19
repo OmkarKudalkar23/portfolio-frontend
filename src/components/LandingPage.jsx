@@ -212,7 +212,23 @@ const LandingPage = () => {
 
       </div>
       <div className="absolute w-full">
-      <button id="scrollBtn" onClick={handleScroll} className = "bg-red-500 z-[999] relative left-1/2 top-1/2">Scroll Down ↓</button>
+<button
+  id="scrollBtn"
+  onClick={handleScroll}
+  className="fixed top-210 left-1/2 transform -translate-x-1/2 text-4xl animate-bounce z-[9999]"
+>
+  
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-12 w-12 text-zinc-200"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+  </svg>
+</button>
 
 
       </div>

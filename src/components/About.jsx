@@ -19,7 +19,7 @@ const About = () => {
           whileHover={{ scale: 1.04, boxShadow: "0 0 40px #29D8FF88" }}
         >
           <motion.img
-            src="/src/assets/omkar1jpg.jpg"
+            src="/assets/omkar1jpg.jpg"
             alt="Your portrait"
             className="object-cover w-full h-full "
             initial={{ scale: 1.1 }}
@@ -83,7 +83,7 @@ const About = () => {
           }}
         >
           <img
-            src="/src/assets/megahack.jpg"
+            src="/assets/megahack.jpg"
             alt="Hackathon Trophy"
             className="w-[560px] h-[370px] object-cover rounded-3xl shadow-2xl border-4 border-[#fa6d86] bg-[#181e2a] mx-auto"
           />
@@ -119,7 +119,7 @@ const About = () => {
           style={{ marginLeft: "2rem" }}
         >
           <img
-            src="/src/assets/spit.jpg"
+            src="/assets/spit.jpg"
             alt="Open Source Contribution"
             className="w-[560px] h-[370px] object-cover rounded-3xl shadow-2xl border-4 border-[#0ae449] bg-[#181e2a] mx-auto"
           />

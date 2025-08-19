@@ -78,7 +78,7 @@ const ContactForm = () => {
           }} type="submit" className="font-['Orbitron']">Submit</button>
         </form>
         <div className="contact-right">
-          <img src="./src/assets/right_img.png" alt="" />
+          <img src="./assets/right_img.png" alt="" />
         </div>
         </div>
         

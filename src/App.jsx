@@ -1,4 +1,3 @@
-// App.jsx or your page file
 import React, { useEffect, useRef } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import "locomotive-scroll/dist/locomotive-scroll.css";
@@ -6,15 +5,11 @@ import Marquee from "./components/Marquee";
 import LandingPage from "./components/LandingPage";
 import CardSection from "./components/CardSection";
 import SmokeyCursor from "./components/lightswind/SmokeyCursor";
-import ProfileCard from "./components/lightswind/ProfileCard";
-
-/*
-  ISSUE EXPLANATION:
-  SmokeyCursor is only working for the LandingPage because the <canvas> it renders is likely being covered up or not spanning the entire app.
-  If you render <SmokeyCursor/> *inside* a page section (like LandingPage), it will only track mouse events for that section.
-  To make it global, SmokeyCursor should be rendered at the top level of your app, outside the scroll container, and styled to cover the whole viewport.
-  Also, ensure its canvas is not being visually covered by other absolutely/relatively positioned elements with higher z-index.
-*/
+import ContactForm from "./components/ContactForm";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import About from "./components/About";
+import ChatBot from "./components/ChatBot";
 
 export default function App() {
   const containerRef = useRef(null);
@@ -23,7 +18,7 @@ export default function App() {
     const scroll = new LocomotiveScroll({
       el: containerRef.current,
       smooth: true,
-      multiplier: 1, // adjust scroll speed
+      multiplier: 1,
     });
 
     return () => {
@@ -33,7 +28,7 @@ export default function App() {
 
   return (
     <>
-      Render SmokeyCursor OUTSIDE the scroll container, so it covers the whole viewport
+      {/* Smokey Cursor Global */}
       <SmokeyCursor
         style={{
           position: "fixed",
@@ -45,12 +40,40 @@ export default function App() {
           zIndex: 9999,
         }}
       />
-      <div data-scroll-container ref={containerRef}>
-        <LandingPage />
-        <Marquee />
-        <CardSection />
-       
-      </div>
+
+      {/* ChatBot fixed outside scroll container */}
+      <div
+  className="chatbot-wrapper"
+  style={{
+    position: "fixed",
+    bottom: "20px",
+    right: "-220px",
+    zIndex: 10001, // higher than SmokeyCursor
+  }}
+>
+  <ChatBot />
+</div>
+
+      {/* Main scroll container */}
+      <Router>
+        <NavBar />
+        <div data-scroll-container ref={containerRef}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <LandingPage />
+                  <Marquee />
+                  <CardSection />
+                  <ContactForm />
+                </>
+              }
+            />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }

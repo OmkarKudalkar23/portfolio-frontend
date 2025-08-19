@@ -8,6 +8,8 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 import { RGBShiftShader } from "three/examples/jsm/shaders/RGBShiftShader";
 import { gsap } from "gsap";
+import LocomotiveScroll from "locomotive-scroll";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 import NavBar from "./NavBar";
 
 const LandingPage = () => {
@@ -108,8 +110,15 @@ const LandingPage = () => {
     };
   }, []);
 
+  // Responsive NavBar wrapper styles
+  // For your own screen (e.g., desktop), keep original size.
+  // For smaller screens, adjust padding, font size, etc.
+  // You can further tweak breakpoints as needed.
   return (
-    <div className="main w-full bg-black">
+    <div 
+    data-scroll
+    data-scroll-speed = "-2"
+    className="main w-full bg-black">
       {/* Navbar */}
       <div className="neon-particles h-screen">
         <span></span>
@@ -118,7 +127,41 @@ const LandingPage = () => {
         <span></span>
         <span></span>
       </div>
-      <NavBar/>
+      {/* Responsive NavBar wrapper */}
+      <div
+        className="
+          w-full
+          z-50
+          fixed
+          top-0
+          left-0
+          flex
+          justify-center
+          items-center
+          pointer-events-none
+        "
+        style={{
+          // This ensures the NavBar stays at the top and is always visible
+        }}
+      >
+        <div
+          className={`
+            pointer-events-auto
+            w-full
+            max-w-7xl
+            px-8
+            py-4
+            ${/* On small screens, reduce padding and font size */""}
+            sm:px-4 sm:py-2
+          `}
+          style={{
+            // Desktop: keep original size, mobile: scale down
+            // You can further adjust these values as needed
+          }}
+        >
+          
+        </div>
+      </div>
 
       {/* 3D Scene */}
       <div className="w-full h-screen overflow-hidden relative flex items-center justify-center">

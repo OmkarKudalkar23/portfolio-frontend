@@ -1,20 +1,23 @@
 import React from 'react'
 import { motion } from 'motion/react';
+import LocomotiveScroll from "locomotive-scroll";
+import "locomotive-scroll/dist/locomotive-scroll.css";
 
 function Marquee() {
   const rowClass =
     'w-full py-4 bg-[#0f1525] text-white overflow-hidden';
 
   return (
-    // Use inline style for marginTop since Tailwind's mt-* may not work in some setups
-    <div style={{ marginTop: '15rem' }} id="about">
     
-      {/* Row 1 - moves left */}
+    <div data-scroll
+    data-scroll-speed ="-0.1"
+    style={{ marginTop: '15rem' }} id="about">
+    
       <div style={{ marginLeft: '5rem', marginBottom: '10rem' }}>
   <motion.h1
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 , delay:2 }}
+    initial={{ opacity: 1, y: 20 }}
+   
+    transition={{ duration: 0.5 , delay:2 }}
     className='font-["OrbitronBold"] text-[6rem] text-white tracking-widest'
   >
     TECH STACK I USE:
@@ -34,12 +37,11 @@ function Marquee() {
             <span className='text-[#334155]'>REACT</span> · <span className='text-[#29D8FF]'>REACT</span>·  <span className='text-[#334155]'>REACT</span> ·
           </h1>
           <h1 className='text-[8vw] px-6 leading-[0.8] font-["UrbanistBold"]'>
-            REACT · <span className='text-[#29d8ff]'>REACT</span> · REACT ·
+            REACT · <span className='text-[#29d8ff]'>REACT</span> · <span className='text-[#334155]'>REACT</span> ·
           </h1>
         </div>
       </div>
 
-      {/* Row 2 - moves right */}
       <div className={rowClass}>
         <div
           className="flex whitespace-nowrap"
@@ -56,7 +58,6 @@ function Marquee() {
         </div>
       </div>
 
-      {/* Row 3 - moves left */}
       <div className={rowClass}>
         <div
           className="flex whitespace-nowrap"
@@ -73,7 +74,6 @@ function Marquee() {
         </div>
       </div>
 
-      {/* Row 4 - moves right */}
       <div className={rowClass}>
         <div
           className="flex whitespace-nowrap"
